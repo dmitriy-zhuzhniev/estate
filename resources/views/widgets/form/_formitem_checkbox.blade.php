@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: itdev13
- * Date: 29.09.16
- * Time: 15:51
- */
-<?php
 if(! isset($value)) $value = null;
 if(! isset($checked)) $checked = null;
 if(! isset($title)) $title = null;
