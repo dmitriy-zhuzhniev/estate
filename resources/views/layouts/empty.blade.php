@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-@include('header.head')
+    @include('header.head')
 </head>
 <body>
 <!--[if lt IE 7]>
@@ -14,8 +14,7 @@
     @include('header.header')
 </header>
 <section>
-    <div class="container-fluid">
-        <legend><h2>Apartments</h2></legend>
+    <div class="container">
         @include('errors.errmsg')
         @yield('content')
     </div>

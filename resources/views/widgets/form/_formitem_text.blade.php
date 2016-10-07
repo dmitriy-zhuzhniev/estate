@@ -1,6 +1,8 @@
 <?php if(! isset($value)) $value = null ?>
-<div class="{!! $errors->has($name) ? 'has-error' : null !!}">
-    <label for="{!! $name !!}">{{ $title }}</label>
-    {!! Form::text($name, $value, array('placeholder' =>  $placeholder )) !!}
-    <p class="help-block">{!! $errors->first($name) !!}</p>
+<div class="form-group {!! $errors->has($name) ? 'has-error' : null !!}">
+    <label for="{!! $name !!}" class="col-sm-2 control-label">{{ $title }}</label>
+    <div class="col-sm-10">
+        {!! Form::text($name, $value, array('placeholder' =>  $placeholder, 'class' => 'form-control')) !!}
+        <p class="help-block">{!! $errors->first($name) !!}</p>
+    </div>
 </div>

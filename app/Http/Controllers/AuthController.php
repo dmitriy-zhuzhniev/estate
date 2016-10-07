@@ -66,11 +66,13 @@ class AuthController extends Controller
                 'password' => 'required',
             ]);
             $remember = (bool) $request->remember;
+
             if (Sentinel::authenticate($request->all(), $remember))
             {
                 return Redirect::intended('/');
             }
             $errors = 'Неправильный логин или пароль.';
+
             return Redirect::back()
                 ->withInput()
                 ->withErrors($errors);

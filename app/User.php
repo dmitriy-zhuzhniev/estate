@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Cartalyst\Sentinel\Native\Facades\Sentinel;
 use \Cartalyst\Sentinel\Users\EloquentUser;
 
 class User extends EloquentUser
@@ -29,6 +30,11 @@ class User extends EloquentUser
         return $this->belongsToMany('App\Role', 'role_users', 'user_id', 'role_id');
     }
 
+    public function apartments()
+    {
+        return $this->hasMany('App\Apartment', 'manager_id');
+    }
+
     public function setTherolesAttribute($roles)
     {
         $this->theroles()->detach();
@@ -40,5 +46,10 @@ class User extends EloquentUser
     public function getTherolesAttribute($roles)
     {
         return array_pluck($this->theroles()->get(['id'])->toArray(), 'id');
+    }
+
+    public function setPasswordAttribute($pass)
+    {
+        $this->attributes['password'] = \Hash::make($pass);
     }
 }

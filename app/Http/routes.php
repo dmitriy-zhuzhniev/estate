@@ -11,8 +11,13 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
+});*/
+
+Route::group(['middleware' => 'authorized'], function () {
+    Route::resource('/', 'ApartmentController');
+    Route::resource('{id}/parse', 'ApartmentController@parse');
 });
 
 Route::group(['middleware' => ['web']], function () {

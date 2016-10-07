@@ -2,6 +2,8 @@
 
 Admin::menu()->url('/')->label('Start page')->icon('fa-dashboard');
 
+Admin::menu(App\Apartment::class)->label('Объекты')->icon('fa-plus');
+
 Admin::menu()->label('Пользователи')->icon('fa-users')->items(function ()
 {
     Admin::menu(App\Permit::class)->label('Права')->icon('fa-key');
