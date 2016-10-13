@@ -15,7 +15,9 @@
         "laravel/framework": "5.2.*",
         "sleeping-owl/admin": "dev-fixSentinelfix52",
         "laravelcollective/html": "5.2.*",
-        "cartalyst/sentinel": "2.0.*"
+        "cartalyst/sentinel": "2.0.*",
+        "dignityinside/translit": "1.0.*",
+        "fabpot/goutte": "^3.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

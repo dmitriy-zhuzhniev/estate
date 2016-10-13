@@ -22,5 +22,6 @@
 </section>
 @include('footer.footer')
 @include('footer.foot_script')
+@yield('script')
 </body>
 </html>

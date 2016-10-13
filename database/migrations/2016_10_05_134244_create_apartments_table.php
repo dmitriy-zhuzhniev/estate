@@ -21,11 +21,13 @@ class CreateApartmentsTable extends Migration
             $table->string('owner');
             $table->string('agreement_id');
             $table->string('realty_goal');
-            $table->integer('region');
-            $table->integer('city');
+            $table->integer('region_id')->index();
+            $table->integer('city_id')->index();
+            $table->integer('district_id')->index();
+            $table->integer('street_id')->index();
             $table->string('house_number');
             $table->integer('apartment_number');
-            $table->integer('square');
+            $table->decimal('square', 20, 2);
             $table->integer('floor');
             $table->integer('total_floor');
             $table->integer('rooms');

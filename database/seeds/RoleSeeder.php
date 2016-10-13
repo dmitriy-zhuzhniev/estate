@@ -29,6 +29,6 @@ class RoleSeeder extends Seeder
             'name' => 'Менеджер',
             'slug' => 'manager',
         ];
-        $managerRole = Sentinel::getRoleRepository()->createModel()->fill($role)->save();
+        Sentinel::getRoleRepository()->createModel()->fill($role)->save();
     }
 }

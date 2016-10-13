@@ -14,8 +14,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property $owner
  * @property $agreement_id
  * @property $realty_goal
- * @property $region
- * @property $city
+ * @property $region_id
+ * @property $city_id
+ * @property $street_id
  * @property $house_number
  * @property $apartment_number
  * @property $square
@@ -36,8 +37,10 @@ class Apartment extends Model
         'owner',
         'agreement_id',
         'realty_goal',
-        'region',
-        'city',
+        'region_id',
+        'district_id',
+        'city_id',
+        'street_id',
         'house_number',
         'apartment_number',
         'square',
@@ -47,13 +50,45 @@ class Apartment extends Model
         'user_id',
     ];
 
+    protected static $types = [
+        'apartment' => 'Apartment',
+        'house' => 'House',
+        'parcel' => 'Parcel',
+        'garage' => 'Garage',
+    ];
+
+    public function region()
+    {
+        return $this->belongsTo(Region::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
+
+    public function street()
+    {
+        return $this->belongsTo(Street::class);
+    }
+
+    public function receivedApartments()
+    {
+        return $this->belongsToMany(ReceivedApartment::class);
+    }
+
     public function manager()
     {
         return $this->belongsTo('App\User');
     }
 
     public static function register(
-        $title, $type, $realty_id, $customer, $owner, $agreement_id, $realty_goal, $region, $city,
+        $title, $type, $realty_id, $customer, $owner, $agreement_id, $realty_goal, $region_id, $city_id,
         $house_number, $apartment_number, $square, $floor, $total_floor, $rooms, $user_id
     ) {
         $obj = new self();
@@ -64,8 +99,8 @@ class Apartment extends Model
         $obj->customer = $customer;
         $obj->owner = $owner;
         $obj->agreement_id = $agreement_id;
-        $obj->region = $region;
-        $obj->city = $city;
+        $obj->region_id = $region_id;
+        $obj->city_id = $city_id;
         $obj->house_number = $house_number;
         $obj->apartment_number = $apartment_number;
         $obj->square = $square;
@@ -75,5 +110,10 @@ class Apartment extends Model
         $obj->user_id = $user_id;
 
         return $obj;
+    }
+
+    public static function getTypes()
+    {
+        return self::$types;
     }
 }

@@ -48,4 +48,11 @@ Route::group(['middleware' => ['web']], function () {
     // Сервисная страничка, показываем после заполнения рег формы, формы сброса и т.
     // о том, что письмо отправлено и надо заглянуть в почтовый ящик.
     Route::get('wait', 'AuthController@wait');
+
+    Route::get('cities', ['as' => 'json.cities', 'uses' => 'CityController@jsonAll']);
+    Route::get('districts', ['as' => 'json.districts', 'uses' => 'DistrictController@jsonAll']);
+    Route::get('streets', ['as' => 'json.streets', 'uses' => 'StreetController@jsonAll']);
+
+//    Route::get('setDistricts', 'ApartmentController@setDistricts');
+//    Route::get('setStreets', 'ApartmentController@setStreets');
 });
